@@ -957,84 +957,44 @@ onUnmounted(() => {
                        <img :src="img04" alt="人影业务快报" class="w-full h-full object-contain rounded-[2px] opacity-90 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300" referrerPolicy="no-referrer" />
                     </div>
                     
-                    <!-- Right: Infographics Chart -->
-                    <div class="flex-1 bg-[#0a1e45]/40 rounded-sm border border-[#2d7ad4]/20 flex items-center justify-between p-5 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+                    <!-- Right: Info Text Display -->
+                    <div class="flex-1 bg-[#0a1e45]/40 rounded-sm border border-[#2d7ad4]/20 flex flex-col justify-center items-center p-4 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.3)] h-[140px]">
                        <!-- Decorative background icon -->
                        <div class="absolute -right-4 -bottom-4 opacity-[0.03] transform rotate-12 transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-0">
-                          <ClipboardList :size="120" class="text-white" />
+                          <ClipboardList :size="80" class="text-white" />
                        </div>
 
-                       <!-- Progress Ring -->
-                       <div class="relative w-28 h-28 flex items-center justify-center shrink-0">
-                          <!-- Outer Glow -->
-                          <div class="absolute inset-0 rounded-full bg-[#00d0ff]/5 blur-xl transition-all duration-700 group-hover:bg-[#00d0ff]/10"></div>
-                          
-                          <svg class="w-full h-full transform -rotate-90 relative z-10" viewBox="0 0 112 112">
-                             <!-- Background Ring -->
-                             <circle cx="56" cy="56" r="48" stroke="#1a3861" stroke-width="4" fill="none" opacity="0.5" />
-                             <circle cx="56" cy="56" r="48" stroke="#1a3861" stroke-width="8" fill="none" stroke-dasharray="1,6" opacity="0.3" />
-                             
-                             <!-- Progress Bar -->
-                             <circle cx="56" cy="56" r="48" stroke="url(#prodGrad)" stroke-width="6" fill="none"
-                                     stroke-dasharray="301.6"
-                                     :stroke-dashoffset="301.6 * (1 - seventhItems[activeSeven].current / seventhItems[activeSeven].total)"
-                                     stroke-linecap="round" class="transition-all duration-1000 ease-in-out" />
-                             
-                             <!-- Inner Glow Ring -->
-                             <circle cx="56" cy="56" r="42" stroke="#00d0ff" stroke-width="0.5" fill="none" opacity="0.2" stroke-dasharray="4,4" />
-                             
-                             <defs>
-                                <linearGradient id="prodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                   <stop offset="0%" stop-color="#2d7ad4" />
-                                   <stop offset="100%" stop-color="#00d0ff" />
-                                </linearGradient>
-                             </defs>
-                          </svg>
-                          
-                          <div class="absolute flex flex-col items-center justify-center z-20">
-                             <span class="text-[10px] text-[#a5d8ff]/60 font-medium mb-1 tracking-wider">已发布</span>
-                             <div class="text-[14px] font-bold text-[#00d0ff] drop-shadow-[0_0_10px_rgba(0,208,255,0.6)] flex items-baseline">
-                                <span class="text-2xl font-mono font-black">{{ seventhItems[activeSeven].current }}</span>
-                                <span class="text-[10px] text-[#a5d8ff]/50 ml-0.5">/{{ seventhItems[activeSeven].total }}期</span>
-                             </div>
-                          </div>
-                       </div>
-                       
-                       <!-- Stats Data -->
-                       <div class="flex-1 flex flex-col gap-6 pl-8 border-l border-[#275b8c]/30 relative z-10">
-                          <div class="flex flex-col relative">
-                             <div class="flex items-center gap-1.5 mb-1.5">
-                                <div class="w-1 h-3 bg-[#47ff88] rounded-full shadow-[0_0_5px_#47ff88]"></div>
-                                <span class="text-[11px] font-medium text-[#c0e3ff] tracking-wide">产品期数</span>
-                             </div>
-                             <div class="flex items-baseline gap-1 text-[13px] text-[#e0f2fe] font-medium">
-                                <span>第 <span class="text-[#00d0ff] font-mono text-xl font-bold">{{ seventhItems[activeSeven].current }}</span> 期</span>
-                                <span class="text-[#2d7ad4]/70 font-light mx-1">/</span>
-                                <span>共 <span class="text-white font-mono text-lg font-bold">{{ seventhItems[activeSeven].total }}</span> 期</span>
-                             </div>
-                          </div>
-                          
-                          <div class="flex flex-col relative">
-                             <div class="flex items-center gap-1.5 mb-1.5">
-                                <div class="w-1 h-3 bg-[#00d0ff] rounded-full shadow-[0_0_5px_#00d0ff]"></div>
-                                <span class="text-[11px] font-medium text-[#64a9f2]/80 tracking-wide">发布进度</span>
-                             </div>
-                             <div class="flex items-baseline gap-1">
-                                <span class="text-2xl font-mono font-bold text-[#00d0ff] tracking-tight">
-                                   {{ Math.round((seventhItems[activeSeven].current / seventhItems[activeSeven].total) * 100) }}
-                                </span>
-                                <span class="text-[12px] text-[#00d0ff]/70 font-bold">%</span>
-                             </div>
-                             <!-- Small progress bar for visual feedback -->
-                             <div class="w-full h-1 bg-[#1a3861] rounded-full mt-2 overflow-hidden max-w-[80px]">
-                                <div class="h-full bg-gradient-to-r from-[#2d7ad4] to-[#00d0ff] transition-all duration-1000" :style="{ width: (seventhItems[activeSeven].current / seventhItems[activeSeven].total * 100) + '%' }"></div>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
+                       <div class="relative z-10 flex flex-col items-center justify-center gap-4 w-full text-center">
+                           <!-- Current Issue -->
+                           <div class="flex items-center justify-center text-[#aee0ff] font-medium tracking-widest">
+                              <span class="text-[15px] font-sans">2026年第</span>
+                              <span class="text-3.5xl font-mono font-black text-[#00d0ff] mx-2 drop-shadow-[0_0_12px_rgba(0,208,255,0.75)]">
+                                 {{ seventhItems[activeSeven].current }}
+                              </span>
+                              <span class="text-[15px] font-sans">期</span>
+                           </div>
+
+                           <!-- Decorative Separator -->
+                           <div class="flex items-center justify-center gap-2 w-32 opacity-65">
+                              <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#00d0ff]/50"></div>
+                              <div class="w-1.5 h-1.5 rounded-full bg-[#00d0ff] shadow-[0_0_8px_#00d0ff]"></div>
+                              <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#00d0ff]/50"></div>
+                           </div>
+
+                           <!-- Total Issue -->
+                           <div class="flex items-center justify-center text-[#aee0ff]/95 font-medium tracking-widest">
+                              <span class="text-[15px] font-sans">共</span>
+                              <span class="text-3.5xl font-mono font-black text-[#47ff88] mx-2 drop-shadow-[0_0_12px_rgba(71,255,136,0.65)]">
+                                 {{ seventhItems[activeSeven].total }}
+                              </span>
+                              <span class="text-[15px] font-sans">期</span>
+                           </div>
+                        </div>
                  </div>
                  
-                 <!-- Bottom: Progress Timeline -->
+                  </div>
+                  
+                  <!-- Bottom: Progress Timeline -->
                  <div class="flex-[0.8] w-full relative px-6 mt-4 flex items-center">
                     <div class="absolute left-[56px] right-[56px] top-[20px] -translate-y-1/2 h-[5px] bg-[#31577d] shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)]"></div>
                     
